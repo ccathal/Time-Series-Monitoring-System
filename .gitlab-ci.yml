@@ -1,0 +1,12 @@
+image: python:3.6
+
+stages:
+  - test
+
+package_installation:
+  stage: test
+  tags:
+    - docker
+  script:
+    - pip3 install tox pytest
+    - echo $CI_COMMIT_MESSAGE
