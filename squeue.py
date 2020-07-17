@@ -90,7 +90,6 @@ def main():
         lines.append(','.join(words))
 
     # print to stdout
-    #print('\n'.join(lines))
     return ('\n'.join(lines))
 
 
