@@ -5,6 +5,7 @@ import re
 import squeue
 import json
 
+
 def main():
 
     # call squeue.py main method to retrieve slurm squeue sample output
@@ -18,7 +19,8 @@ def main():
 
     try:
         # final data structure will be a nested dictonary
-        squeue_info = dict({})
+        # JLF: you just need var = {} or var = dict() to start a new dict.
+        squeue_info = dict()
 
         # open file data has been previously written to & read line-by-line
         with open('parse.txt', 'r') as fp:
@@ -62,8 +64,6 @@ def main():
     finally:
         fp.close()
 
+
 if __name__ == "__main__":
     main()
-
-			
-			
