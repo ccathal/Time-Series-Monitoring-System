@@ -30,6 +30,7 @@ if __name__ == "__main__":
         # call squeue.py to retrieve slurm squeue sample output
         # this command will be later replaced by slurm.squeue command
         process = subprocess.Popen(CMD,
+            shell = True,
             stdout=subprocess.PIPE)
     
         # read stdout line-by-line & convert from bytes to str
