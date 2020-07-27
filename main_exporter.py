@@ -17,12 +17,26 @@ SQUEUE_JOBS = Gauge('squeue_jobs',
                     'hold info on current squeue slurm jobs',
                     ['job_type', 'slurm_group'])
 
+# function to test both valid & invalid squeue text files
+def test_data():
+    with open('tests/data/slurm-out-invalid.txt') as my_file:
+        invalid_output_array = my_file.readlines()
+        invalid_dict = parse_output(invalid_output_array, dict())
+        print(invalid_dict)
+
+    with open('tests/data/slurm-out-valid.txt') as my_file:
+        valid_output_array = my_file.readlines()
+        valid_dict = parse_output(valid_output_array, dict())
+        print(valid_dict)
 
 if __name__ == "__main__":
 
     # start up the server to expose the metrics
     start_http_server(8000)
-    
+  
+    # test parser function to ensure it ignores invalid data
+    test_data()
+
     while True:
         squeue_info = dict()
         output_array = []
