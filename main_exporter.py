@@ -22,9 +22,6 @@ if __name__ == "__main__":
 
     # start up the server to expose the metrics
     start_http_server(8000)
-  
-    # test parser function to ensure it ignores invalid data
-    test_data()
 
     while True:
         squeue_info = dict()
