@@ -90,7 +90,7 @@ def main():
         lines.append(','.join(words))
 
     # print to stdout
-    return ('\n'.join(lines))
+    print('\n'.join(lines))
 
 
 if __name__ == "__main__":
