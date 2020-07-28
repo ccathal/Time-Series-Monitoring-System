@@ -5,9 +5,10 @@ from prometheus_client import start_http_server, Gauge
 from slurm_parser import parse_output
 import time
 import subprocess
+import argparse
 
 # shell command to get squeue information
-CMD = ['python3', 'squeue.py']
+CMD = 'python3 squeue.py'
 # prometheus client exporter settings
 # update squeue info every 30 seconds
 UPDATE_PERIOD = 5
@@ -17,18 +18,24 @@ SQUEUE_JOBS = Gauge('squeue_jobs',
                     ['job_type', 'slurm_group'])
 
 # main method
-if __name__ == "__main__":
+if __name__ == '__main__':
+
+    my_parser = argparse.ArgumentParser(description='Scheduler job queue information command')
+    my_parser.add_argument('-c', '--command', nargs='?', const=CMD, type=str,
+        default=CMD, help='the command to get job queue information')
+
+    args = my_parser.parse_args()
+    command = vars(args)['command'].split()
 
     # start up the server to expose the metrics
     start_http_server(8000)
 
     while True:
-        squeue_info = dict()
         output_array = []
 
         # call squeue.py to retrieve slurm squeue sample output
         # this command will be later replaced by slurm.squeue command
-        process = subprocess.Popen(CMD,
+        process = subprocess.Popen(command,
                                    shell=True,
                                    stdout=subprocess.PIPE)
 
@@ -43,7 +50,7 @@ if __name__ == "__main__":
             output_array.append(output)
 
         # call function that will parse stdout output
-        dictionary = parse_output(output_array, squeue_info)
+        dictionary = parse_output(output_array)
 
         # loop through data
         # create gauge objects containing integer value associated with

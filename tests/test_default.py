@@ -80,8 +80,7 @@ def test_summary():
 
     with open(datafile, 'r') as df:
         lines = df.readlines()
-        result = {}
-        parse_output(lines, result)
+        result = parse_output(lines)
 
         assert(result['allegro'] == allegro)
         assert(result['lofar'] == lofar)

@@ -1,0 +1,7 @@
+action: py36, msg: getenv
+cwd: /home/cathal/Documents/cathal/tests/.tox
+cmd: /usr/bin/python3 -m virtualenv --no-download --python /usr/bin/python3.6 py36
+created virtual environment CPython3.6.11.final.0-64 in 1040ms
+  creator CPython3Posix(dest=/home/cathal/Documents/cathal/tests/.tox/py36, clear=False, global=False)
+  seeder FromAppData(download=False, html5lib=latest, packaging=latest, CacheControl=latest, colorama=latest, ipaddr=latest, retrying=latest, progress=latest, requests=latest, pyparsing=latest, urllib3=latest, distlib=latest, wheel=latest, certifi=latest, pytoml=latest, msgpack=latest, appdirs=latest, chardet=latest, lockfile=latest, six=latest, idna=latest, contextlib2=latest, pep517=latest, pip=latest, webencodings=latest, setuptools=latest, distro=latest, pkg_resources=latest, via=copy, app_data_dir=/home/cathal/.local/share/virtualenv/seed-app-data/v1.0.1.debian)
+  activators BashActivator,CShellActivator,FishActivator,PowerShellActivator,PythonActivator,XonshActivator

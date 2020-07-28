@@ -1,0 +1,22 @@
+action: py36, msg: getenv
+cwd: /home/cathal/Documents/cathal/tests
+cmd: /home/cathal/Documents/cathal/tests/.tox/py36/bin/python -m pip install pytest
+Collecting pytest
+  Using cached pytest-5.4.3-py3-none-any.whl (248 kB)
+Collecting py>=1.5.0
+  Using cached py-1.9.0-py2.py3-none-any.whl (99 kB)
+Collecting more-itertools>=4.0.0
+  Using cached more_itertools-8.4.0-py3-none-any.whl (43 kB)
+Collecting importlib-metadata>=0.12; python_version < "3.8"
+  Downloading importlib_metadata-1.7.0-py2.py3-none-any.whl (31 kB)
+Collecting wcwidth
+  Using cached wcwidth-0.2.5-py2.py3-none-any.whl (30 kB)
+Collecting pluggy<1.0,>=0.12
+  Using cached pluggy-0.13.1-py2.py3-none-any.whl (18 kB)
+Requirement already satisfied: packaging in ./.tox/py36/lib/python3.6/site-packages (from pytest) (20.3)
+Collecting attrs>=17.4.0
+  Using cached attrs-19.3.0-py2.py3-none-any.whl (39 kB)
+Collecting zipp>=0.5
+  Downloading zipp-3.1.0-py3-none-any.whl (4.9 kB)
+Installing collected packages: py, more-itertools, zipp, importlib-metadata, wcwidth, pluggy, attrs, pytest
+Successfully installed attrs-19.3.0 importlib-metadata-1.7.0 more-itertools-8.4.0 pluggy-0.13.1 py-1.9.0 pytest-5.4.3 wcwidth-0.2.5 zipp-3.1.0

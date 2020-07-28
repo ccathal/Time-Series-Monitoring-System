@@ -10,7 +10,7 @@ def test_invalid_data():
 
     with open('data/slurm-out-invalid.txt') as my_file:
         invalid_output_array = my_file.readlines()
-        invalid_dict = parse_output(invalid_output_array, dict())
+        invalid_dict = parse_output(invalid_output_array)
         print(invalid_dict)
 
         for key in invalid_dict:
