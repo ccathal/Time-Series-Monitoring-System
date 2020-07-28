@@ -6,6 +6,7 @@ from slurm_parser import parse_output
 import time
 import subprocess
 import argparse
+import sys
 
 # shell command to get squeue information
 CMD = 'python3 squeue.py'
@@ -28,16 +29,26 @@ if __name__ == '__main__':
     command = vars(args)['command'].split()
 
     # start up the server to expose the metrics
-    start_http_server(8000)
+    try:
+        start_http_server(8000)
+    except:
+        print('Port 8000 already in use.\nClose port and run again.')
+        sys.exit()
 
+    
     while True:
         output_array = []
 
         # call squeue.py to retrieve slurm squeue sample output
         # this command will be later replaced by slurm.squeue command
-        process = subprocess.Popen(command,
-                                   shell=True,
-                                   stdout=subprocess.PIPE)
+        try:
+            process = subprocess.Popen(
+                command, shell=True,
+                stdout=subprocess.PIPE)
+        except:
+            print('Scheduler job queue command is not compatible.\n\
+                    Fix using --command flag and run again.')
+            sys.exit()
 
         # read stdout line-by-line & convert from bytes to str
         while True:
