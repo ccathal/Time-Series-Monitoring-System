@@ -3,6 +3,7 @@
 
 from slurm_parser import parse_output
 
+
 # function to test invalid squeue text files
 def test_invalid_data():
     counter = 0

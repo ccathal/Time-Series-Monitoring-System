@@ -30,3 +30,4 @@ I am also a wrong line but this time without even a single comma
 7498,stepname7498,allegro,projecmine-user004,projecmine-user004,normal,(null),4,1,COMPLETING,20-07-24T07:49:57,270
 7499,stepname7499,lofar,lofar-user001,lofar-user001,normal,(null),2,1,SUSPENDED,20-07-24T09:34:57,165
 ◔_◔
+7499,stepname7499,lofar,lofar-user001,lofar-user001,normal,(null),2,1,THIS ISN'T THE STATE YOU'RE LOOKING FOR :-),20-07-24T09:34:57,165

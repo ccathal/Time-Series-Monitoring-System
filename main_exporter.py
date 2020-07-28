@@ -4,7 +4,6 @@
 from prometheus_client import start_http_server, Gauge
 from slurm_parser import parse_output
 import time
-import squeue
 import subprocess
 
 # shell command to get squeue information
@@ -26,13 +25,13 @@ if __name__ == "__main__":
     while True:
         squeue_info = dict()
         output_array = []
-        
+
         # call squeue.py to retrieve slurm squeue sample output
         # this command will be later replaced by slurm.squeue command
         process = subprocess.Popen(CMD,
-            shell = True,
-            stdout=subprocess.PIPE)
-    
+                                   shell=True,
+                                   stdout=subprocess.PIPE)
+
         # read stdout line-by-line & convert from bytes to str
         while True:
             output = process.stdout.readline().decode('utf-8')
@@ -40,9 +39,9 @@ if __name__ == "__main__":
             # while stdout is not empty
             if not output:
                 break
-            
+
             output_array.append(output)
-            
+
         # call function that will parse stdout output
         dictionary = parse_output(output_array, squeue_info)
 
