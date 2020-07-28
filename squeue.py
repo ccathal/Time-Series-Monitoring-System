@@ -42,7 +42,7 @@ def main():
     else:
         nlines = args.nlines
 
-    accounts = ['lofar', 'tropomi', 'sksp', 'spexone', 'allegro', 'projecmine']
+    accounts = ['lofar', 'tropomi', 'sksp', 'spexone', 'allegro', 'projectmine']
     # groupname == username
     user_suffix = ['user001', 'user002', 'user003', 'user004', 'user005']
     states = ['PENDING', 'RUNNING', 'SUSPENDED', 'COMPLETING', 'COMPLETED']
