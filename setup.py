@@ -12,7 +12,7 @@ setup(name='hpc_job_scheduler_exporter',
     entry_points={
         'console_scripts': [
             'main_exporter = hpc_job_scheduler_exporter.main_exporter:main',
-            'slurm_parser = slurm_parser:main',
+            'slurm_parser = slurm_parser:parse_output',
             'squeue = squeue:main',
         ]
     }
