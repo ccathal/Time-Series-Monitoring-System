@@ -1,0 +1,5 @@
+[console_scripts]
+main_exporter = time_series_monitoring.main_exporter:main
+slurm_parser = slurm_parser:main
+squeue = squeue:main
+

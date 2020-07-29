@@ -18,8 +18,7 @@ SQUEUE_JOBS = Gauge('squeue_jobs',
                     'hold info on current squeue slurm jobs',
                     ['job_type', 'slurm_group'])
 
-# main method
-if __name__ == '__main__':
+def main():
 
     my_parser = argparse.ArgumentParser(description='Scheduler job queue information command')
     my_parser.add_argument('-c', '--command', nargs='?', const=CMD, type=str,
@@ -35,7 +34,6 @@ if __name__ == '__main__':
         print('Port 8000 already in use.\nClose port and run again.')
         sys.exit()
 
-    
     while True:
         output_array = []
 
@@ -73,3 +71,7 @@ if __name__ == '__main__':
 
         # generate squeue info every UPDATE_PERIOD seconds
         time.sleep(UPDATE_PERIOD)
+
+# main method
+if __name__ == '__main__':
+    main()
