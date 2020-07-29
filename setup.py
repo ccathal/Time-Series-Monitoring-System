@@ -1,17 +1,17 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
-setup(name='time_series_monitoring',
+setup(name='hpc_job_scheduler_exporter',
     version='0.1',
-    description='Time Series Monitoring System',
+    description='Prometheus Exporter for job information associated with HPC Scheduler',
     url='http://gitlab.com/surfprace/cathal',
     author='Cathal Corbett',
     author_email='cathalcorbett3@gmail.com',
-    packages=['time_series_monitoring'],
     zip_safe=False,
     install_requires=[],
+    packages=find_packages('hpc_job_scheduler_exporter', exclude=['tests']),
     entry_points={
         'console_scripts': [
-            'main_exporter = time_series_monitoring.main_exporter:main',
+            'main_exporter = hpc_job_scheduler_exporter.main_exporter:main',
             'slurm_parser = slurm_parser:main',
             'squeue = squeue:main',
         ]
