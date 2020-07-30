@@ -1,4 +1,4 @@
 __pycache__/
 build/
 dist/
-hpc_job_scheduler_exporter.egg-info/
+job_queue_exporter.egg-info/
