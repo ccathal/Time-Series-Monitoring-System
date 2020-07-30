@@ -3,13 +3,14 @@
 
 from slurm_parser import parse_output
 
+
 # function to test invalid squeue text files
 def test_invalid_data():
     counter = 0
 
     with open('data/slurm-out-invalid.txt') as my_file:
         invalid_output_array = my_file.readlines()
-        invalid_dict = parse_output(invalid_output_array, dict())
+        invalid_dict = parse_output(invalid_output_array)
         print(invalid_dict)
 
         for key in invalid_dict:

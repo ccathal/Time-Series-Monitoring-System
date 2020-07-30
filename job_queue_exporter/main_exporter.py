@@ -4,11 +4,12 @@
 from prometheus_client import start_http_server, Gauge
 from slurm_parser import parse_output
 import time
-import squeue
 import subprocess
+import argparse
+import sys
 
 # shell command to get squeue information
-CMD = ['python3', 'squeue.py']
+CMD = 'python3 squeue.py'
 # prometheus client exporter settings
 # update squeue info every 30 seconds
 UPDATE_PERIOD = 5
@@ -17,22 +18,36 @@ SQUEUE_JOBS = Gauge('squeue_jobs',
                     'hold info on current squeue slurm jobs',
                     ['job_type', 'slurm_group'])
 
-# main method
-if __name__ == "__main__":
+def main():
+
+    my_parser = argparse.ArgumentParser(description='Scheduler job queue information command')
+    my_parser.add_argument('-c', '--command', nargs='?', const=CMD, type=str,
+        default=CMD, help='the command to get job queue information')
+
+    args = my_parser.parse_args()
+    command = vars(args)['command'].split()
 
     # start up the server to expose the metrics
-    start_http_server(8000)
+    try:
+        start_http_server(8000)
+    except:
+        print('Port 8000 already in use.\nClose port and run again.')
+        sys.exit()
 
     while True:
-        squeue_info = dict()
         output_array = []
-        
+
         # call squeue.py to retrieve slurm squeue sample output
         # this command will be later replaced by slurm.squeue command
-        process = subprocess.Popen(CMD,
-            shell = True,
-            stdout=subprocess.PIPE)
-    
+        try:
+            process = subprocess.Popen(
+                command, shell=True,
+                stdout=subprocess.PIPE)
+        except:
+            print('Scheduler job queue command is not compatible.\n\
+                    Fix using --command flag and run again.')
+            sys.exit()
+
         # read stdout line-by-line & convert from bytes to str
         while True:
             output = process.stdout.readline().decode('utf-8')
@@ -40,11 +55,11 @@ if __name__ == "__main__":
             # while stdout is not empty
             if not output:
                 break
-            
+
             output_array.append(output)
-            
+
         # call function that will parse stdout output
-        dictionary = parse_output(output_array, squeue_info)
+        dictionary = parse_output(output_array)
 
         # loop through data
         # create gauge objects containing integer value associated with
@@ -56,3 +71,7 @@ if __name__ == "__main__":
 
         # generate squeue info every UPDATE_PERIOD seconds
         time.sleep(UPDATE_PERIOD)
+
+# main method
+if __name__ == '__main__':
+    main()
