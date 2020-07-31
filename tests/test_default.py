@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import os
-from .job_queue_exporter.slurm_parser import parse_output
+from ..job_queue_exporter.slurm_parser import parse_output
 
 # function to test valid squeue text files
 def test_summary():

@@ -4,3 +4,4 @@ dist/
 src/job_queue_exporter.egg-info/
 venv/
 tests/__pycache__/
+tests/.tox/
