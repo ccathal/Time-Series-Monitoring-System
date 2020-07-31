@@ -10,5 +10,4 @@ package_installation:
   script:
     - pip3 install tox pytest
     - echo $CI_COMMIT_MESSAGE
-    - cd cathal
     - tox
