@@ -1,0 +1,30 @@
+action: py36, msg: getenv
+cwd: /home/cathal/Documents/cathal/tests
+cmd: /home/cathal/Documents/cathal/tests/.tox/py36/bin/python -m pip install pytest
+Collecting pytest
+  Downloading pytest-6.0.1-py3-none-any.whl (270 kB)
+Collecting toml
+  Downloading toml-0.10.1-py2.py3-none-any.whl (19 kB)
+Collecting importlib-metadata>=0.12; python_version < "3.8"
+  Downloading importlib_metadata-1.7.0-py2.py3-none-any.whl (31 kB)
+Collecting more-itertools>=4.0.0
+  Downloading more_itertools-8.4.0-py3-none-any.whl (43 kB)
+Requirement already satisfied: packaging in ./.tox/py36/lib/python3.6/site-packages (from pytest) (20.3)
+Collecting attrs>=17.4.0
+  Downloading attrs-19.3.0-py2.py3-none-any.whl (39 kB)
+Collecting py>=1.8.2
+  Downloading py-1.9.0-py2.py3-none-any.whl (99 kB)
+Collecting pluggy<1.0,>=0.12
+  Downloading pluggy-0.13.1-py2.py3-none-any.whl (18 kB)
+Collecting iniconfig
+  Downloading iniconfig-1.0.0.tar.gz (7.8 kB)
+Collecting zipp>=0.5
+  Downloading zipp-3.1.0-py3-none-any.whl (4.9 kB)
+Building wheels for collected packages: iniconfig
+  Building wheel for iniconfig (setup.py): started
+  Building wheel for iniconfig (setup.py): finished with status 'done'
+  Created wheel for iniconfig: filename=iniconfig-1.0.0-py3-none-any.whl size=4218 sha256=f7204ee14f70ebdd1219c2282d4c6b16506410f0a3e21df8208e32745a244c7c
+  Stored in directory: /home/cathal/.cache/pip/wheels/e2/5a/0a/b0387ec240c4861082599c8e9aeacee1fa74e3d1d5691626ac
+Successfully built iniconfig
+Installing collected packages: toml, zipp, importlib-metadata, more-itertools, attrs, py, pluggy, iniconfig, pytest
+Successfully installed attrs-19.3.0 importlib-metadata-1.7.0 iniconfig-1.0.0 more-itertools-8.4.0 pluggy-0.13.1 py-1.9.0 pytest-6.0.1 toml-0.10.1 zipp-3.1.0

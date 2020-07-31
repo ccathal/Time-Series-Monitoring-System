@@ -1,4 +1,5 @@
 __pycache__/
 build/
 dist/
-job_queue_exporter.egg-info/
+src/job_queue_exporter.egg-info/
+venv/
