@@ -1,0 +1,16 @@
+action: py38, msg: installpkg
+cwd: /home/cathal/Documents/cathal
+cmd: /home/cathal/Documents/cathal/.tox/py38/bin/python -m pip install --no-deps -U .tox/.tmp/package/1/job_queue_exporter-0.2.zip
+Processing ./.tox/.tmp/package/1/job_queue_exporter-0.2.zip
+Building wheels for collected packages: job-queue-exporter
+  Building wheel for job-queue-exporter (setup.py): started
+  Building wheel for job-queue-exporter (setup.py): finished with status 'done'
+  Created wheel for job-queue-exporter: filename=job_queue_exporter-0.2-py3-none-any.whl size=4988 sha256=a0a03cbb32539223c2ff78659eccaad580f5e92915ecc6b98e7a8e9134bbcf98
+  Stored in directory: /home/cathal/.cache/pip/wheels/60/96/56/4e36eee8da2a14210f374280612d8673843c00541e1e4872c9
+Successfully built job-queue-exporter
+Installing collected packages: job-queue-exporter
+  Attempting uninstall: job-queue-exporter
+    Found existing installation: job-queue-exporter 0.2
+    Uninstalling job-queue-exporter-0.2:
+      Successfully uninstalled job-queue-exporter-0.2
+Successfully installed job-queue-exporter-0.2

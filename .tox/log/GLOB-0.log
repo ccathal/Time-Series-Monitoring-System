@@ -1,0 +1,53 @@
+action: GLOB, msg: packaging
+cwd: /home/cathal/Documents/cathal
+cmd: /usr/bin/python3 setup.py sdist --formats=zip --dist-dir .tox/dist
+running sdist
+running egg_info
+writing src/job_queue_exporter.egg-info/PKG-INFO
+writing dependency_links to src/job_queue_exporter.egg-info/dependency_links.txt
+writing entry points to src/job_queue_exporter.egg-info/entry_points.txt
+writing requirements to src/job_queue_exporter.egg-info/requires.txt
+writing top-level names to src/job_queue_exporter.egg-info/top_level.txt
+reading manifest file 'src/job_queue_exporter.egg-info/SOURCES.txt'
+writing manifest file 'src/job_queue_exporter.egg-info/SOURCES.txt'
+running check
+creating job_queue_exporter-0.2
+creating job_queue_exporter-0.2/src
+creating job_queue_exporter-0.2/src/job_queue_exporter
+creating job_queue_exporter-0.2/src/job_queue_exporter.egg-info
+copying files to job_queue_exporter-0.2...
+copying README.md -> job_queue_exporter-0.2
+copying setup.py -> job_queue_exporter-0.2
+copying src/job_queue_exporter/__init__.py -> job_queue_exporter-0.2/src/job_queue_exporter
+copying src/job_queue_exporter/main_exporter.py -> job_queue_exporter-0.2/src/job_queue_exporter
+copying src/job_queue_exporter/slurm_parser.py -> job_queue_exporter-0.2/src/job_queue_exporter
+copying src/job_queue_exporter/squeue.py -> job_queue_exporter-0.2/src/job_queue_exporter
+copying src/job_queue_exporter.egg-info/PKG-INFO -> job_queue_exporter-0.2/src/job_queue_exporter.egg-info
+copying src/job_queue_exporter.egg-info/SOURCES.txt -> job_queue_exporter-0.2/src/job_queue_exporter.egg-info
+copying src/job_queue_exporter.egg-info/dependency_links.txt -> job_queue_exporter-0.2/src/job_queue_exporter.egg-info
+copying src/job_queue_exporter.egg-info/entry_points.txt -> job_queue_exporter-0.2/src/job_queue_exporter.egg-info
+copying src/job_queue_exporter.egg-info/not-zip-safe -> job_queue_exporter-0.2/src/job_queue_exporter.egg-info
+copying src/job_queue_exporter.egg-info/requires.txt -> job_queue_exporter-0.2/src/job_queue_exporter.egg-info
+copying src/job_queue_exporter.egg-info/top_level.txt -> job_queue_exporter-0.2/src/job_queue_exporter.egg-info
+Writing job_queue_exporter-0.2/setup.cfg
+creating '.tox/dist/job_queue_exporter-0.2.zip' and adding 'job_queue_exporter-0.2' to it
+adding 'job_queue_exporter-0.2'
+adding 'job_queue_exporter-0.2/src'
+adding 'job_queue_exporter-0.2/README.md'
+adding 'job_queue_exporter-0.2/PKG-INFO'
+adding 'job_queue_exporter-0.2/setup.py'
+adding 'job_queue_exporter-0.2/setup.cfg'
+adding 'job_queue_exporter-0.2/src/job_queue_exporter'
+adding 'job_queue_exporter-0.2/src/job_queue_exporter.egg-info'
+adding 'job_queue_exporter-0.2/src/job_queue_exporter/main_exporter.py'
+adding 'job_queue_exporter-0.2/src/job_queue_exporter/__init__.py'
+adding 'job_queue_exporter-0.2/src/job_queue_exporter/slurm_parser.py'
+adding 'job_queue_exporter-0.2/src/job_queue_exporter/squeue.py'
+adding 'job_queue_exporter-0.2/src/job_queue_exporter.egg-info/top_level.txt'
+adding 'job_queue_exporter-0.2/src/job_queue_exporter.egg-info/SOURCES.txt'
+adding 'job_queue_exporter-0.2/src/job_queue_exporter.egg-info/PKG-INFO'
+adding 'job_queue_exporter-0.2/src/job_queue_exporter.egg-info/dependency_links.txt'
+adding 'job_queue_exporter-0.2/src/job_queue_exporter.egg-info/entry_points.txt'
+adding 'job_queue_exporter-0.2/src/job_queue_exporter.egg-info/not-zip-safe'
+adding 'job_queue_exporter-0.2/src/job_queue_exporter.egg-info/requires.txt'
+removing 'job_queue_exporter-0.2' (and everything under it)
