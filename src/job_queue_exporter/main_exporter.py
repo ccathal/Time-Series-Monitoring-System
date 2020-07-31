@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from prometheus_client import start_http_server, Gauge
-from slurm_parser import parse_output
+from .slurm_parser import parse_output
 import time
 import subprocess
 import argparse
