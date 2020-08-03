@@ -1,0 +1,8 @@
+[Unit]
+Description=HPC Scheduler Exporter Service
+
+[Service]
+ExecStart=main_exporter
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,75 @@
+- name: 'Install packages'
+  apt: pkg=curl state=latest
+
+- name: 'Add Prometheus User'
+  user:
+    name: prometheus
+    create_home: no
+    shell: '/bin/false'
+    comment: 'Prometheus User'
+    password: '!'
+
+- name: 'Make directories and dummy files necessary for prometheus'
+  file:
+    path: '{{ item }}'
+    state: directory
+    owner: prometheus
+    group: prometheus
+  with_items:
+    - /etc/prometheus
+    - /var/lib/prometheus 
+
+- name: 'Make directories and dummy files necessary for prometheus'
+  file:
+    path: '{{ item }}'
+    state: touch
+    owner: prometheus
+    group: prometheus
+  with_items:
+    - /etc/prometheus/prometheus.yml
+    #- /etc/prometheus/prometheus.rules.yml
+
+- name: 'Download & Install & Configure latest Prometheus version'
+  script: files/prometheus.sh
+
+- name: 'Assign ownership of prometheus tools to prometheus user'
+  file:
+    path: '{{ item }}'
+    owner: prometheus
+    group: prometheus
+    mode: a+x
+  with_items:
+    - /usr/local/bin/prometheus
+    - /usr/local/bin/promtool
+
+- name: 'Assign ownership of prometheus tools to prometheus user'
+  file:
+    path: '{{ item }}'
+    state: directory
+    owner: prometheus
+    group: prometheus
+    recurse: yes
+    mode: a+x
+  with_items:
+    - /etc/prometheus/consoles
+    - /etc/prometheus/console_libraries
+
+- name: 'Populate prometheus.yml file'
+  copy:
+    src: files/prometheus/prometheus.yml
+    dest: /etc/prometheus/prometheus.yml
+
+- name: 'Populate prometheus.service file'
+  copy:
+    src: files/prometheus/prometheus.service
+    dest: /etc/systemd/system/prometheus.service
+
+- name: 'Start HPC Exporter daemon'
+  systemd:
+    state: started
+    enabled: yes
+    daemon_reload: yes
+    name: prometheus
+
+- name: 'Remove files'
+  shell: rm -rf prometheus-*

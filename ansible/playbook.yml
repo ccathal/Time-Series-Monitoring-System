@@ -1,0 +1,11 @@
+---
+- hosts: 127.0.0.1
+  connection: local 
+  become: true
+  roles:
+  - role: hpc-exporter
+    tags: hpc-exporter
+  - role: prometheus
+    tags: prometheus
+  - role: grafana
+    tags: grafana

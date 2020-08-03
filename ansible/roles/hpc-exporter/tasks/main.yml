@@ -1,0 +1,52 @@
+- name: 'Install Packages'
+  apt: pkg=python3-pip state=latest
+
+- name: 'Download Prometheus Client'
+  shell: python3 -m pip install prometheus_client
+
+- name: 'Download Prometheus Exporter for HPC Scheduler'
+  shell: python3 -m pip install job-queue-exporter 
+
+- name: 'Add HPC Prometheus Exporter User'
+  user:
+    name: hpc-exporter
+    create_home: no
+    shell: '/bin/false'
+    comment: 'HPC Prometheus Exporter User'
+    password: '!'
+
+- name: 'Assign ownership of hpc-exporter tools to hpc-exporter user'
+  file:
+    path: '{{ item }}'
+    state: directory
+    owner: hpc-exporter
+    group: hpc-exporter
+    recurse: yes
+    mode: a+x
+  with_items:
+    - /etc/hpc-exporter
+    - /var/lib/hpc-exporter  
+
+- name: 'Change ownership of python scripts'
+  file:
+    path: '{{ item }}'
+    owner: hpc-exporter
+    group: hpc-exporter
+    state: file
+    mode: a+x
+  with_items:
+      - /usr/local/bin/main_exporter
+      - /usr/local/bin/squeue
+      - /usr/local/bin/slurm_parser
+
+- name: 'Populate configuration files'
+  copy:
+    src: files/hpc-exporter/hpc-exporter.service
+    dest: /etc/systemd/system/
+
+- name: 'Start HPC Exporter daemon'
+  systemd:
+    state: started
+    enabled: yes
+    daemon_reload: yes
+    name: hpc-exporter

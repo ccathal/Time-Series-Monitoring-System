@@ -1,0 +1,48 @@
+- name: 'Download latest version of Grafana'
+  apt: 
+    deb: https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_latest_amd64.deb
+
+- name: 'Install packages'
+  apt: pkg={{ item }} state=latest
+  with_items:
+  - adduser
+  - libfontconfig
+
+#- dpkg_selections:
+#    name: grafana_latest_amd64.deb
+#    selection: install
+
+- name: 'Start Grafana daemon'
+  systemd:
+    state: started
+    enabled: yes
+    daemon_reload: yes
+    name: grafana-server
+
+- name: Remove file (delete file)
+  file:
+    path: grafana_latest_amd64.deb
+    state: absent
+
+- name: 'Create Prometheus datasource'
+  grafana_datasource:
+    name: 'datasource-prometheus'
+    grafana_url: 'http://localhost:3000'
+    grafana_user: 'admin'
+    grafana_password: 'admin'
+    ds_type: 'prometheus'
+    is_default: 'yes'
+    ds_url: 'http://localhost:9090'
+    state: present
+
+- name: 'Import Grafana dashboard'
+  grafana_dashboard:
+    grafana_url: http://localhost:3000
+    grafana_user: 'admin'
+    grafana_password: 'admin'
+    path: files/dashboards/grafana.json
+    uid: eiZfAU7Gk
+    org_id: 1
+    commit_message: Update by Ansible
+    state: present
+    overwrite: true
