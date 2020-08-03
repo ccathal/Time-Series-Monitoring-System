@@ -26,7 +26,7 @@ def main():
         default=CMD, help='the command to get job queue information')
 
     args = my_parser.parse_args()
-    command = vars(args)['command'].split()
+    command = vars(args)['command']#.split()
 
     # start up the server to expose the metrics
     try:
