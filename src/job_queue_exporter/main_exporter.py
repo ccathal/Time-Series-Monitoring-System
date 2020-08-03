@@ -9,7 +9,8 @@ import argparse
 import sys
 
 # shell command to get squeue information
-CMD = 'python3 squeue.py'
+#CMD = 'python3 squeue.py'
+CMD = 'python3 -c "from job_queue_exporter.squeue import main; main()"'
 # prometheus client exporter settings
 # update squeue info every 30 seconds
 UPDATE_PERIOD = 5
@@ -40,7 +41,7 @@ def main():
         # call squeue.py to retrieve slurm squeue sample output
         # this command will be later replaced by slurm.squeue command
         try:
-            process = subprocess.Popen(command, stdout=subprocess.PIPE)
+            process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
         except:
             print('Scheduler job queue command is not compatible.\n\
                 Fix using --command flag and run again.')
