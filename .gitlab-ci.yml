@@ -1,4 +1,4 @@
-image: python:3.6
+image: python:3.8
 
 stages:
   - test
@@ -10,3 +10,4 @@ package_installation:
   script:
     - pip3 install tox pytest
     - echo $CI_COMMIT_MESSAGE
+    - tox

@@ -40,12 +40,10 @@ def main():
         # call squeue.py to retrieve slurm squeue sample output
         # this command will be later replaced by slurm.squeue command
         try:
-            process = subprocess.Popen(
-                command, shell=True,
-                stdout=subprocess.PIPE)
+            process = subprocess.Popen(command, stdout=subprocess.PIPE)
         except:
             print('Scheduler job queue command is not compatible.\n\
-                    Fix using --command flag and run again.')
+                Fix using --command flag and run again.')
             sys.exit()
 
         # read stdout line-by-line & convert from bytes to str
