@@ -14,8 +14,7 @@ setup(
     entry_points={
         'console_scripts': [
             'main_exporter = job_queue_exporter.main_exporter:main',
-            'slurm_parser = slurm_parser:parse_output',
-            'squeue = squeue:main',
+            'squeue-dummy = job_queue_exporter.squeue:main',
         ]
     }
 )

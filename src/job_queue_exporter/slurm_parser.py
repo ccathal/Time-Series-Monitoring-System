@@ -3,7 +3,6 @@
 
 
 def parse_output(output_array):
-    
     squeue_info = {}
     default_values = {
         'PENDING': 0,
