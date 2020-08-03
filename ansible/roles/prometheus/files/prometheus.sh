@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Download prometheus and copy utilities to where they should be in the filesystem
-#VERSION=2.2.1
+# VERSION=2.2.1
 VERSION=$(curl https://raw.githubusercontent.com/prometheus/prometheus/master/VERSION)
 wget https://github.com/prometheus/prometheus/releases/download/v${VERSION}/prometheus-${VERSION}.linux-amd64.tar.gz
 tar xvzf prometheus-${VERSION}.linux-amd64.tar.gz

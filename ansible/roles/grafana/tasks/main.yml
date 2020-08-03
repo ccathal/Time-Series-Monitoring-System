@@ -35,13 +35,23 @@
     ds_url: 'http://localhost:9090'
     state: present
 
+- name: 'Exprot GRafana Dashboard'
+  grafana_dashboard:
+    grafana_url: http://localhost:3000
+    grafana_user: 'admin'
+    grafana_password: 'admin'
+    org_id: 1
+    state: export
+    uid: 'eiZfaU7Gk'
+    path: 'files/dashboards/grafana.json'
+
 - name: 'Import Grafana dashboard'
   grafana_dashboard:
     grafana_url: http://localhost:3000
     grafana_user: 'admin'
     grafana_password: 'admin'
-    path: files/dashboards/grafana.json
-    uid: eiZfAU7Gk
+    path: 'files/dashboards/grafana.json'
+    uid: 'eiZfAU7Gk'
     org_id: 1
     commit_message: Update by Ansible
     state: present
