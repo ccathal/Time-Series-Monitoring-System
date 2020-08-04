@@ -2,15 +2,23 @@ image: python:3.8
 
 stages:
   - test
+  - deploy
 
 package_installation:
   stage: test
   tags:
     - docker
   script:
-    - apt install python3-apt
     - pip3 install tox pytest ansible
     - echo $CI_COMMIT_MESSAGE
     - tox
+    
+ansible_deployment:
+  stage: deploy
+  image:
+    - ubuntu:20.04
+  tags:
+    - docker
+  script:  
     - cd ansible
     - ansible-playbook playbook.yml
