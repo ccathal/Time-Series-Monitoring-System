@@ -15,8 +15,7 @@ package_installation:
     
 ansible_deployment:
   stage: deploy
-  image:
-    - ubuntu:20.04
+  image: ubuntu:20.04
   tags:
     - docker
   script:  
