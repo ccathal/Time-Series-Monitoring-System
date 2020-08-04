@@ -2,10 +2,16 @@
   apt: pkg=python3-pip state=latest
 
 - name: 'Download Prometheus Client'
-  shell: python3 -m pip install prometheus_client
+  pip:
+    name: prometheus_client
+    state: latest
+    executable: pip3
 
-- name: 'Download Prometheus Exporter for HPC Scheduler'
-  shell: python3 -m pip install job-queue-exporter 
+- name: 'Install Job Queue Scheduler Prometheus Exporter'
+  pip:
+    name: job-queue-exporter
+    state: latest
+    executable: pip3
 
 - name: 'Add HPC Prometheus Exporter User'
   user:
@@ -36,8 +42,7 @@
     mode: a+x
   with_items:
       - /usr/local/bin/main_exporter
-      - /usr/local/bin/squeue
-      - /usr/local/bin/slurm_parser
+      - /usr/local/bin/squeue_dummy
 
 - name: 'Populate configuration files'
   copy:

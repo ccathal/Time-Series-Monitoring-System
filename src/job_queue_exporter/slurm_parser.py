@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-
 def parse_output(output_array):
-    
     squeue_info = {}
     default_values = {
         'PENDING': 0,
