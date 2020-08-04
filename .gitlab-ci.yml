@@ -8,6 +8,8 @@ package_installation:
   tags:
     - docker
   script:
-    - pip3 install tox pytest
+    - pip3 install tox pytest ansible
     - echo $CI_COMMIT_MESSAGE
     - tox
+    - cd ansible
+    - ansible-playbook playbook.yml
