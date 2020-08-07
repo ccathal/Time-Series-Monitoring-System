@@ -13,8 +13,8 @@ def parse_output(output_array):
         'COMPLETED': 0,
         'CONFIGURING': 0,
         'FAILED': 0,
-        'TIME_OUT': 0,
-        'PRE_EMPTED': 0,
+        'TIMEOUT': 0,
+        'PREEMPTED': 0,
         'NODE_FAIL': 0,
     }
 
