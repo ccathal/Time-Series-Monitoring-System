@@ -615,7 +615,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "squeue_jobs{job_type=\"PRE_EMPTED\"}",
+          "expr": "squeue_jobs{job_type=\"PREEMPTED\"}",
           "interval": "",
           "legendFormat": "{{slurm_group}}",
           "refId": "A"
@@ -625,7 +625,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Squeue PRE_EMPTED Jobs",
+      "title": "Squeue PREEMPTED Jobs",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -800,7 +800,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "squeue_jobs{job_type=\"TIME_OUT\"}",
+          "expr": "squeue_jobs{job_type=\"TIMEOUT\"}",
           "interval": "",
           "legendFormat": "{{slurm_group}}",
           "refId": "A"
@@ -810,7 +810,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Squeue TIME_OUT Jobs",
+      "title": "Squeue TIMEOUT Jobs",
       "tooltip": {
         "shared": true,
         "sort": 0,

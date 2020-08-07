@@ -20,8 +20,8 @@ def test_summary():
         'COMPLETED': 1,
         'CONFIGURING': 0,
         'FAILED': 0,
-        'TIME_OUT': 0,
-        'PRE_EMPTED': 0,
+        'TIMEOUT': 0,
+        'PREEMPTED': 0,
         'NODE_FAIL': 0
     }
     lofar = {
@@ -33,8 +33,8 @@ def test_summary():
         'COMPLETED': 1,
         'CONFIGURING': 0,
         'FAILED': 0,
-        'TIME_OUT': 0,
-        'PRE_EMPTED': 0,
+        'TIMEOUT': 0,
+        'PREEMPTED': 0,
         'NODE_FAIL': 0
     }
     projectmine = {
@@ -46,8 +46,8 @@ def test_summary():
         'COMPLETED': 1,
         'CONFIGURING': 0,
         'FAILED': 0,
-        'TIME_OUT': 0,
-        'PRE_EMPTED': 0,
+        'TIMEOUT': 0,
+        'PREEMPTED': 0,
         'NODE_FAIL': 0
     }
     sksp = {
@@ -59,8 +59,8 @@ def test_summary():
         'COMPLETED': 2,
         'CONFIGURING': 0,
         'FAILED': 0,
-        'TIME_OUT': 0,
-        'PRE_EMPTED': 0,
+        'TIMEOUT': 0,
+        'PREEMPTED': 0,
         'NODE_FAIL': 0
     }
     spexone = {
@@ -72,8 +72,8 @@ def test_summary():
         'COMPLETED': 0,
         'CONFIGURING': 0,
         'FAILED': 0,
-        'TIME_OUT': 0,
-        'PRE_EMPTED': 0,
+        'TIMEOUT': 0,
+        'PREEMPTED': 0,
         'NODE_FAIL': 0
     }
 
