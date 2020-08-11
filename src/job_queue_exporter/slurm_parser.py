@@ -3,19 +3,6 @@
 
 def parse_output(output_array):
     squeue_info = {}
-    default_values = {
-        'PENDING': 0,
-        'RUNNING': 0,
-        'SUSPENDED': 0,
-        'CANCELLED': 0,
-        'COMPLETING': 0,
-        'COMPLETED': 0,
-        'CONFIGURING': 0,
-        'FAILED': 0,
-        'TIMEOUT': 0,
-        'PREEMPTED': 0,
-        'NODE_FAIL': 0,
-    }
 
     for output in output_array:
 
@@ -28,11 +15,13 @@ def parse_output(output_array):
                 project = line_array[2]
                 state = line_array[9]
                 try:
-                    if(state in default_values):
+                    # if state is only 1 word
+                    if(not(' ' in state or not state)):
                         # setdefault will return the squeue[project] value and, if necesary
                         # it will initialize the value with a copy of "default_values" dict
                         # It is important to make a COPY of default_values
-                        values = squeue_info.setdefault(project, dict(default_values))
+                        values = squeue_info.get(project)
+                        values = squeue_info.setdefault(project, values.setdefault(state, 0))
                         values[state] += 1
                 except:
                     print('Invalid job type. Ignoring stdout squeue output line: {}'.format(ouput))

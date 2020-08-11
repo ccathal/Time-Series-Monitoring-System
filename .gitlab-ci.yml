@@ -1,7 +1,7 @@
 image: python:3.8
 
 stages:
-  - test
+  #- test
   - deploy
 
 package_installation:
@@ -13,11 +13,11 @@ package_installation:
     - echo $CI_COMMIT_MESSAGE
     - tox
     
-ansible_deployment:
-  stage: deploy
-  image: ubuntu:20.04
-  tags:
-    - docker
-  script:  
-    - cd ansible
-    - ansible-playbook playbook.yml
+#ansible_deployment:
+#  stage: deploy
+#  image: ubuntu:20.04
+#  tags:
+#    - docker
+#  script:  
+#    - cd ansible
+#    - ansible-playbook playbook.yml
