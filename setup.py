@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='job_queue_exporter',
-    version='0.7',
+    version='0.8',
     description='Prometheus Exporter for job information associated with HPC Scheduler',
     url='http://gitlab.com/surfprace/cathal',
     author='Cathal Corbett',
