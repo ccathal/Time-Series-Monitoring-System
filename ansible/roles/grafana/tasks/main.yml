@@ -28,26 +28,3 @@
   file:
     path: grafana_latest_amd64.deb
     state: absent
-
-- name: 'Create Prometheus datasource'
-  grafana_datasource:
-    name: 'datasource-prometheus'
-    grafana_url: 'http://localhost:3000'
-    grafana_user: 'admin'
-    grafana_password: 'admin'
-    ds_type: 'prometheus'
-    is_default: 'yes'
-    ds_url: 'http://localhost:19090/prometheus'
-    state: present
-
-- name: 'Import Grafana dashboard'
-  collections:
-    - community.grafana
-  grafana_dashboard:
-    grafana_url: 'http://localhost:3000'
-    grafana_user: 'admin'
-    grafana_password: 'admin'
-    path: '/home/cathal/Documents/cathal/ansible/roles/grafana/files/dashboards/grafana.json'
-    commit_message: 'Update by Ansible'
-    state: present
-    overwrite: true

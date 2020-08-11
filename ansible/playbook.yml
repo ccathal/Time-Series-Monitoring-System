@@ -11,3 +11,5 @@
     tags: prometheus
   - role: grafana
     tags: grafana
+  - role: grafana-config
+    tags: grafana-config

@@ -5,7 +5,9 @@
     update_cache: yes
 
 - name: 'Copy reverse proxy config settings'
-  blockinfile: path=/etc/nginx/sites-available/default block={{lookup('file', 'files/default')}} create=yes state=present
+  copy:
+    src: files/default
+    dest: /etc/nginx/sites-available/default
 
 - name: 'Start nginx daemon'
   systemd:
