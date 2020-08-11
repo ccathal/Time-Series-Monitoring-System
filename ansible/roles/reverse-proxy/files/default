@@ -1,0 +1,17 @@
+server {
+        listen 0.0.0.0:19090;
+        location /prometheus/ {
+                proxy_pass http://localhost:9090/prometheus/;
+        }
+}
+
+server {
+        listen 0.0.0.0:80;
+        root /usr/share/nginx/html;
+        index index.html index.htm;
+
+        location /grafana/ {
+                proxy_pass http://localhost:3000/;
+        }
+}
+

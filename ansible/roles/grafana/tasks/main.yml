@@ -8,6 +8,11 @@
   - adduser
   - libfontconfig
 
+- name: 'Configure grafana.ini for nginx revrse proxy'
+  copy:
+    src: files/grafana.ini
+    dest: /etc/grafana/
+
 - name: 'Install community.grafana'
   shell:
     cmd: ansible-galaxy collection install community.grafana
@@ -32,7 +37,7 @@
     grafana_password: 'admin'
     ds_type: 'prometheus'
     is_default: 'yes'
-    ds_url: 'http://localhost:9090'
+    ds_url: 'http://localhost:19090/prometheus'
     state: present
 
 - name: 'Import Grafana dashboard'
