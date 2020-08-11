@@ -16,7 +16,7 @@
     grafana_url: 'http://localhost:3000'
     grafana_user: 'admin'
     grafana_password: 'admin'
-    path: 'roles/grafana/files/dashboards/grafana.json'
+    path: 'roles/grafana-config/files/grafana.json'
     commit_message: 'Update by Ansible'
     state: present
     overwrite: true

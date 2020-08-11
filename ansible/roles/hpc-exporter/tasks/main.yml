@@ -46,7 +46,7 @@
 
 - name: 'Populate configuration files'
   copy:
-    src: files/hpc-exporter/hpc-exporter.service
+    src: files/hpc-exporter.service
     dest: /etc/systemd/system/
 
 - name: 'Start HPC Exporter daemon'
