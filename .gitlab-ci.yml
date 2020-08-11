@@ -1,8 +1,8 @@
 image: python:3.8
 
 stages:
-  #- test
-  - deploy
+  - test
+  #- deploy
 
 package_installation:
   stage: test
