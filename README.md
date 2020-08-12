@@ -5,6 +5,7 @@ This repository consists of -
 3. Ansible deplyoment of the exporter, prometheus, grafana and the reverse proxy contained in the `ansible` directory.
 
 ## Main Instructions to Deploy TSM System
+The deployment of the Time Series Monitoring System occurs under the `localhost` domain.
 1. Install Ansible
 ```
 sudo apt install ansible
