@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1597151282942,
+  "iteration": 1597224653264,
   "links": [],
   "panels": [
     {
@@ -65,8 +65,8 @@
       "scopedVars": {
         "job_type_variable": {
           "selected": true,
-          "text": "CANCELLED",
-          "value": "CANCELLED"
+          "text": "COMPLETED",
+          "value": "COMPLETED"
         }
       },
       "seriesOverrides": [],
@@ -165,13 +165,13 @@
       "renderer": "flot",
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1597151282942,
+      "repeatIteration": 1597224653264,
       "repeatPanelId": 2,
       "scopedVars": {
         "job_type_variable": {
           "selected": true,
-          "text": "COMPLETED",
-          "value": "COMPLETED"
+          "text": "COMPLETING",
+          "value": "COMPLETING"
         }
       },
       "seriesOverrides": [],
@@ -270,13 +270,13 @@
       "renderer": "flot",
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1597151282942,
+      "repeatIteration": 1597224653264,
       "repeatPanelId": 2,
       "scopedVars": {
         "job_type_variable": {
           "selected": true,
-          "text": "COMPLETING",
-          "value": "COMPLETING"
+          "text": "PENDING",
+          "value": "PENDING"
         }
       },
       "seriesOverrides": [],
@@ -375,13 +375,13 @@
       "renderer": "flot",
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1597151282942,
+      "repeatIteration": 1597224653264,
       "repeatPanelId": 2,
       "scopedVars": {
         "job_type_variable": {
           "selected": true,
-          "text": "CONFIGURING",
-          "value": "CONFIGURING"
+          "text": "RUNNING",
+          "value": "RUNNING"
         }
       },
       "seriesOverrides": [],
@@ -480,643 +480,13 @@
       "renderer": "flot",
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1597151282942,
-      "repeatPanelId": 2,
-      "scopedVars": {
-        "job_type_variable": {
-          "selected": true,
-          "text": "FAILED",
-          "value": "FAILED"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "squeue_jobs{job_type=~\"$job_type_variable\"}",
-          "interval": "",
-          "legendFormat": "{{slurm_group}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Squeue $job_type_variable Jobs",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 12,
-        "w": 12,
-        "x": 12,
-        "y": 24
-      },
-      "hiddenSeries": false,
-      "id": 7,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "maxPerRow": 2,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pluginVersion": "7.1.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1597151282942,
-      "repeatPanelId": 2,
-      "scopedVars": {
-        "job_type_variable": {
-          "selected": true,
-          "text": "NODE_FAIL",
-          "value": "NODE_FAIL"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "squeue_jobs{job_type=~\"$job_type_variable\"}",
-          "interval": "",
-          "legendFormat": "{{slurm_group}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Squeue $job_type_variable Jobs",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 12,
-        "w": 12,
-        "x": 0,
-        "y": 36
-      },
-      "hiddenSeries": false,
-      "id": 8,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "maxPerRow": 2,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pluginVersion": "7.1.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1597151282942,
-      "repeatPanelId": 2,
-      "scopedVars": {
-        "job_type_variable": {
-          "selected": true,
-          "text": "PENDING",
-          "value": "PENDING"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "squeue_jobs{job_type=~\"$job_type_variable\"}",
-          "interval": "",
-          "legendFormat": "{{slurm_group}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Squeue $job_type_variable Jobs",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 12,
-        "w": 12,
-        "x": 12,
-        "y": 36
-      },
-      "hiddenSeries": false,
-      "id": 9,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "maxPerRow": 2,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pluginVersion": "7.1.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1597151282942,
-      "repeatPanelId": 2,
-      "scopedVars": {
-        "job_type_variable": {
-          "selected": true,
-          "text": "PRE_EMPTED",
-          "value": "PRE_EMPTED"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "squeue_jobs{job_type=~\"$job_type_variable\"}",
-          "interval": "",
-          "legendFormat": "{{slurm_group}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Squeue $job_type_variable Jobs",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 12,
-        "w": 12,
-        "x": 0,
-        "y": 48
-      },
-      "hiddenSeries": false,
-      "id": 10,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "maxPerRow": 2,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pluginVersion": "7.1.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1597151282942,
-      "repeatPanelId": 2,
-      "scopedVars": {
-        "job_type_variable": {
-          "selected": true,
-          "text": "RUNNING",
-          "value": "RUNNING"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "squeue_jobs{job_type=~\"$job_type_variable\"}",
-          "interval": "",
-          "legendFormat": "{{slurm_group}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Squeue $job_type_variable Jobs",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 12,
-        "w": 12,
-        "x": 12,
-        "y": 48
-      },
-      "hiddenSeries": false,
-      "id": 11,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "maxPerRow": 2,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pluginVersion": "7.1.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1597151282942,
+      "repeatIteration": 1597224653264,
       "repeatPanelId": 2,
       "scopedVars": {
         "job_type_variable": {
           "selected": true,
           "text": "SUSPENDED",
           "value": "SUSPENDED"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "squeue_jobs{job_type=~\"$job_type_variable\"}",
-          "interval": "",
-          "legendFormat": "{{slurm_group}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Squeue $job_type_variable Jobs",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 12,
-        "w": 12,
-        "x": 0,
-        "y": 60
-      },
-      "hiddenSeries": false,
-      "id": 12,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "maxPerRow": 2,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pluginVersion": "7.1.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1597151282942,
-      "repeatPanelId": 2,
-      "scopedVars": {
-        "job_type_variable": {
-          "selected": true,
-          "text": "TIME_OUT",
-          "value": "TIME_OUT"
         }
       },
       "seriesOverrides": [],
@@ -1184,19 +554,13 @@
         "current": {
           "selected": true,
           "tags": [],
-          "text": "CANCELLED + COMPLETED + COMPLETING + CONFIGURING + FAILED + NODE_FAIL + PENDING + PRE_EMPTED + RUNNING + SUSPENDED + TIME_OUT",
+          "text": "COMPLETED + COMPLETING + PENDING + RUNNING + SUSPENDED",
           "value": [
-            "CANCELLED",
             "COMPLETED",
             "COMPLETING",
-            "CONFIGURING",
-            "FAILED",
-            "NODE_FAIL",
             "PENDING",
-            "PRE_EMPTED",
             "RUNNING",
-            "SUSPENDED",
-            "TIME_OUT"
+            "SUSPENDED"
           ]
         },
         "datasource": "datasource-prometheus",
@@ -1206,65 +570,9 @@
         "label": null,
         "multi": true,
         "name": "job_type_variable",
-        "options": [
-          {
-            "selected": true,
-            "text": "CANCELLED",
-            "value": "CANCELLED"
-          },
-          {
-            "selected": true,
-            "text": "COMPLETED",
-            "value": "COMPLETED"
-          },
-          {
-            "selected": true,
-            "text": "COMPLETING",
-            "value": "COMPLETING"
-          },
-          {
-            "selected": true,
-            "text": "CONFIGURING",
-            "value": "CONFIGURING"
-          },
-          {
-            "selected": true,
-            "text": "FAILED",
-            "value": "FAILED"
-          },
-          {
-            "selected": true,
-            "text": "NODE_FAIL",
-            "value": "NODE_FAIL"
-          },
-          {
-            "selected": true,
-            "text": "PENDING",
-            "value": "PENDING"
-          },
-          {
-            "selected": true,
-            "text": "PRE_EMPTED",
-            "value": "PRE_EMPTED"
-          },
-          {
-            "selected": true,
-            "text": "RUNNING",
-            "value": "RUNNING"
-          },
-          {
-            "selected": true,
-            "text": "SUSPENDED",
-            "value": "SUSPENDED"
-          },
-          {
-            "selected": true,
-            "text": "TIME_OUT",
-            "value": "TIME_OUT"
-          }
-        ],
+        "options": [],
         "query": "label_values(squeue_jobs, job_type)",
-        "refresh": 0,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
@@ -1277,8 +585,8 @@
     ]
   },
   "time": {
-    "from": "now-15m",
-    "to": "now"
+    "from": "2020-08-12T09:26:05.682Z",
+    "to": "2020-08-12T09:31:19.603Z"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -1296,5 +604,5 @@
   "timezone": "",
   "title": "Slurm Squeue Dashboard",
   "uid": "eiZfAU7Gk",
-  "version": 2
+  "version": 4
 }
