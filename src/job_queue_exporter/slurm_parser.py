@@ -28,5 +28,4 @@ def parse_output(output_array):
                     print('Invalid job type. Ignoring stdout squeue output line: {}'.format(ouput))
         except:
             print('Squeue output line does not contain all 12 parameters. Ignoring stdout squeue output line: {}'.format(output))
-    print(squeue_info)
     return squeue_info
