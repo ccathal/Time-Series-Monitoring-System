@@ -13,10 +13,6 @@
     src: files/grafana.ini
     dest: /etc/grafana/
 
-- name: 'Install community.grafana'
-  shell:
-    cmd: ansible-galaxy collection install community.grafana
-
 - name: 'Start Grafana daemon'
   systemd:
     state: started
