@@ -1,6 +1,3 @@
-- name: 'Install community.grafana'
-  shell: roles/grafana-config/files/community_grafana.sh
-
 - name: 'Create Prometheus datasource'
   collections:
     - community.grafana

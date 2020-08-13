@@ -6,9 +6,9 @@ This repository consists of -
 
 ## Main Instructions to Deploy TSM System
 The deployment of the Time Series Monitoring System occurs under the `localhost` domain.
-1. Install Ansible
+1. Install Ansible & ansible-galaxy collection for Grafana
 ```
-sudo apt install ansible
+sudo apt install ansible && ansible-galaxy collection install community.grafana
 ```
 2. Clone Git Repository
 ```
