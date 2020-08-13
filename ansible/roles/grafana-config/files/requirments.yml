@@ -1,4 +1,0 @@
----
-collections:
-  - name: community.grafana
-    source: https://galaxy.ansible.com

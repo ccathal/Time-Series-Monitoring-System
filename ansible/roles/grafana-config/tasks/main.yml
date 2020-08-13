@@ -1,7 +1,9 @@
 - name: 'Install community.grafana'
-  shell: ansible-galaxy collection install -r roles/grafana-config/files/requirments.yml
+  shell: roles/grafana-config/files/community_grafana.sh
 
 - name: 'Create Prometheus datasource'
+  collections:
+    - community.grafana
   grafana_datasource:
     name: 'datasource-prometheus'
     grafana_url: 'http://localhost:3000'
