@@ -107,3 +107,13 @@ ExecStart=main_exporter --command 'squeue --all -h --format=%A,%j,%a,%g,%u,%P,%v
 [Install]
 WantedBy=multi-user.target
 ```
+
+### Prometheus Server
+The number one file in configuring Prometheus is `prometheus.yml` which specifies all the Prometheus Targets, their associated http endpoint where metrics are exposed and scraping time interval. Other information can be configured here associated with Prometheus Rules and the built-in Prometheus AlertManager System (not yet implemented). The `prometheus.yml` file is found under `ansible/roles/prometheus/files/prometheus/prometheus.yml` which runs at `http://localhost:9090/` locally or `http://localhost:19090/prometheus/` to the outside world due to the reverse proxy.
+
+### Grafana
+Two tasks need to be completed before getting nice dynamic graphs of job queue information.
+1. Configure our Prometheus data source to http://localhost:19090/prometheus/
+2. Configure the dashboard which is stored as JSON data. Our Grafana dashboard stored under `ansible/roles/grafana/files/grafana.json`
+Our graphs are created through Prometheus PromQL queries in the following format: `squeue_jobs{job_type=<job_type.name>}` which creates graphs for individual job queue types. The graphs can be further inspected by clicking on an individual `{{slurm_group}}` in the graph legend.
+Additionally, our Grafana JSON graph uses the Grafana builtin *variable* tool. This dashboard panels (graphs) to be created dynamically based the available `job_type`. Therefore, all job queue information displayed on graphs is relevant and no graphs are statically written with no available data.
