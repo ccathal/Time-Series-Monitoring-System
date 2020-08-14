@@ -112,8 +112,12 @@ WantedBy=multi-user.target
 The number one file in configuring Prometheus is `prometheus.yml` which specifies all the Prometheus Targets, their associated http endpoint where metrics are exposed and scraping time interval. Other information can be configured here associated with Prometheus Rules and the built-in Prometheus AlertManager System (not yet implemented). The `prometheus.yml` file is found under `ansible/roles/prometheus/files/prometheus/prometheus.yml` which runs at `http://localhost:9090/` locally or `http://localhost:19090/prometheus/` to the outside world due to the reverse proxy.
 
 ### Grafana
+Grafana runs at `http://localhost:3000/` locally or `http://localhost:80/grafana/` to the outside world due to the reverse proxy. The default Grafana username and password is `admin` to login.
+
 Two tasks need to be completed before getting nice dynamic graphs of job queue information.
 1. Configure our Prometheus data source to http://localhost:19090/prometheus/
 2. Configure the dashboard which is stored as JSON data. Our Grafana dashboard stored under `ansible/roles/grafana/files/grafana.json`
+
 Our graphs are created through Prometheus PromQL queries in the following format: `squeue_jobs{job_type=<job_type.name>}` which creates graphs for individual job queue types. The graphs can be further inspected by clicking on an individual `{{slurm_group}}` in the graph legend.
-Additionally, our Grafana JSON graph uses the Grafana builtin *variable* tool. This dashboard panels (graphs) to be created dynamically based the available `job_type`. Therefore, all job queue information displayed on graphs is relevant and no graphs are statically written with no available data.
+
+Additionally, our Grafana JSON graph uses the Grafana builtin *variable* tool. This dashboard panels (graphs) to be created dynamically based the available `job_type`. Therefore, all job queue information displayed on graphs is relevant and no graphs are statically written with no available data. If no dashboard data shows when logging in often the user will need to enter `dashboad settings > variables` and double click one of the toggles until the variables show at the bottom of the page.
