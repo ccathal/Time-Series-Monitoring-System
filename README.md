@@ -115,7 +115,7 @@ The number one file in configuring Prometheus is `prometheus.yml` which specifie
 Grafana runs at `http://localhost:3000/` locally or `http://localhost:80/grafana/` to the outside world due to the reverse proxy. The default Grafana username and password is `admin` to login.
 
 Two tasks need to be completed before getting nice dynamic graphs of job queue information.
-1. Configure our Prometheus data source to http://localhost:19090/prometheus/
+1. Configure our Prometheus data source to `http://localhost:19090/prometheus/`
 2. Configure the dashboard which is stored as JSON data. Our Grafana dashboard stored under `ansible/roles/grafana/files/grafana.json`
 
 Our graphs are created through Prometheus PromQL queries in the following format: `squeue_jobs{job_type=<job_type.name>}` which creates graphs for individual job queue types. The graphs can be further inspected by clicking on an individual `{{slurm_group}}` in the graph legend.
