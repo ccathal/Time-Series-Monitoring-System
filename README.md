@@ -121,3 +121,8 @@ Two tasks need to be completed before getting nice dynamic graphs of job queue i
 Our graphs are created through Prometheus PromQL queries in the following format: `squeue_jobs{job_type=<job_type.name>}` which creates graphs for individual job queue types. The graphs can be further inspected by clicking on an individual `{{slurm_group}}` in the graph legend.
 
 Additionally, our Grafana JSON graph uses the Grafana builtin *variable* tool. This dashboard panels (graphs) to be created dynamically based the available `job_type`. Therefore, all job queue information displayed on graphs is relevant and no graphs are statically written with no available data. If no dashboard data shows when logging in often the user will need to enter `dashboad settings > variables` and double click one of the toggles until the variables show at the bottom of the page.
+
+It is worth mentioning that the `grafana` Ansible role is involved in installing Grafana and it's dependencies and automating the deployment of Grafana. The `grafana-config` role is just involved in deploying the datasource and dashboard to the already up-and-running Grafana. The Ansible deployment of Grafana tools is now maintained by [community.grafana](https://github.com/ansible-collections/community.grafana) which is why the following needs to be executed prior to running the Ansible script. Path issues exist when trying to install the ansible-galaxy collection in the Ansible script.
+```
+ansible-galaxy collection install community.grafana
+```
