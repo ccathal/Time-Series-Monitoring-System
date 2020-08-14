@@ -22,11 +22,7 @@ squeue --all -h --format=%A,%j,%a,%g,%u,%P,%v,%D,%C,%T,%V,%M
 ```
 ansible-playbook -K playbook.yml
 ```
-5. It can happen that if any of the services (`nginx.service`,`hpc-exporter.service`,`prometheus.service`,`grafana-server.service`) being configured by Ansible happen to be already running on the the machine prior to running Ansible will not get restarted. If a service (particularly `nginx.service`) has been running prior to the ansible installation, restart the service manually:
-```
-systemctl restart <service-name.service>
-```
-6. Result:
+5. Result:
 * If you open your web browser and visit the following sites, metrics of each sub-system can be observed:
     * `http://localhost:80/grafana/metrics`
     * `http://localhost:19090/prometheus/metrics`
@@ -81,11 +77,6 @@ ansible-playbook -K playbook.yml --tags grafana-config
 Prometheus by default runs at `http://localhost:9090/`. The reverse proxy makes the service available at `http://localhost:19090/prometheus/`. Prometheus metrics are avalaible at `http://localhost:19090/prometheus/metrics`
 
 Grafana by default runs at `http://localhost:3000/`. The reverse proxy makes the service available at `http://localhost:80/grafana/`. Grafana metrics are avalaible at `http://localhost:80/grafana/metrics`.
-
-If the NGINX reverse proxy is already running on the local machine before running the Ansible script the Ansible script may fail to reload the new NGINX configurations. Thhis will have to be maunually done via:
-```
-systemctl restart nginx.service
-```
 
 ### HPC-Exporter
 The Ansible role for the `hpc-exporter` runs the `main_exporter` entry point as a background service. The associated systemd service file is located under `/etc/systemd/system/hpc-exporter.service` once the Ansible script has finished executing.

@@ -11,7 +11,7 @@
 
 - name: 'Start nginx daemon'
   systemd:
-    state: started
+    state: restarted
     enabled: yes
     daemon_reload: yes
     name: nginx
