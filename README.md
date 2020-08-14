@@ -6,19 +6,19 @@ This repository consists of -
 
 ## Main Instructions to Deploy TSM System
 The deployment of the Time Series Monitoring System occurs under the `localhost` domain.
-1. Install Ansible & ansible-galaxy collection for Grafana
+1. Install Ansible & ansible-galaxy collection for Grafana:
 ```
 sudo apt install ansible && ansible-galaxy collection install community.grafana
 ```
-2. Clone Git Repository
+2. Clone Git Repository:
 ```
 git clone https://gitlab.com/surfprace/cathal.git
 ```
-4. Change `--command` flag in exporter service file under `ansible/roles/hpc-exporter/files/hpc-exporter.service` to for the python script to execute the official Slurm squeue commnd. The following command is recommended to insert:
+4. Change the `--command` flag in the exporter service file at `ansible/roles/hpc-exporter/files/hpc-exporter.service` for the python script to execute the official Slurm `squeue` commnd. The following command is recommended to insert:
 ```
 squeue --all -h --format=%A,%j,%a,%g,%u,%P,%v,%D,%C,%T,%V,%M
 ```
-4. From the `ansible` directory run the ansible playbook & enter root user password when prompted:
+4. From the `ansible` directory, run the ansible playbook & enter root user password when prompted:
 ```
 ansible-playbook -K playbook.yml
 ```
@@ -27,7 +27,7 @@ ansible-playbook -K playbook.yml
 systemctl restart <service-name.service>
 ```
 6. Result:
-* If you open your web browser and visit the following sites, metrics of each system can be observed:
+* If you open your web browser and visit the following sites, metrics of each sub-system can be observed:
     * http://localhost:80/grafana/metrics
     * http://localhost:19090/prometheus/metrics
     * http://localhost:8000/metrics (exporter)
@@ -35,12 +35,13 @@ systemctl restart <service-name.service>
 * To view Grafana search `http://localhost:80/grafana/` where the Prometheus datasource and JSON dashboard have been preconfigured and graphs should be immediatly available.
 
 ## Slurm Exporter
-To install the exporter package execute: 
+The exporter is avalable as a `pip` package. To install the exporter package execute: 
 ```
 pip3 install job-queue-exporter
 ```
 
-The package creates `entry_points` as found in the `setup.py` file:
+The package creates `entry_points` as found in the `setup.py` file. These `entry_points` are usually found under `/usr/local/bin/` when the above command is executed.
+
 1. `main_exporter` is the associated entry point to  `main_exporter.py` which contians the exporter main method.
 2. `squeue_dummy` is the associated entry point to `squeue.py` which generated mock slurm squeue output for testing purposes.
 
@@ -51,15 +52,15 @@ from job_queue_exporter.slurm_parser import parse_output
 The `parse_ouput` function can then be accessed directly within the main exporter.
 
 ## Testing
-The `tox` package is used to automate the 3 `pytest` files in the `tests` directory which is run in the CICD pipeline.
+The `tox` package is used to automate the 3 `pytest` files within the `tests` directory which is run in the CICD pipeline.
 
 ## Ansible Deployment
 The Ansible `playbook.yml` contains 5 roles:
-1. `reverse-proxy` deploys `nginx` reverse proxy for promteheus and grafana.
+1. `reverse-proxy` deploys `nginx` reverse proxy for Promteheus and Grafana.
 2. `hpc-exporter` deploys the above exporter.
-3. `prometheus` deploys prometheus.
-4. `grafana` deploys grafana.
-5. `grafana-config` deploys the associated grafana datasource (prometheus) and dashboard.
+3. `prometheus` deploys Prometheus.
+4. `grafana` deploys Grafana.
+5. `grafana-config` deploys the associated Grafana datasource (Prometheus) and dashboard.
 
 ## Running the Playbook
 Prior to running the playbook ensure ansible is installed:
@@ -94,7 +95,7 @@ The status of the exporter service can be viewed:
 systemctl status hpc-exporter.service
 ```
 
-By default the `main_exporter` runs the `squeue_dummy` entry point to generate mock Slurm squeue data.
+By default the `main_exporter` runs the `squeue_dummy` entry point to generate mock Slurm `squeue` data.
 To get the `main_exporter` to execute the proper Slurm squeue command & generate real data, the `--commmand` flag in the service file located under `ansible/roles/hpc-exporter/files/hpc-exporter.service` in the Ansible script will need to be changed. The following is the recommended format which is compatible with `slurm_parser.py`
 ```
 [Unit]
