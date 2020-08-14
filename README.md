@@ -28,9 +28,9 @@ systemctl restart <service-name.service>
 ```
 6. Result:
 * If you open your web browser and visit the following sites, metrics of each sub-system can be observed:
-    * http://localhost:80/grafana/metrics
-    * http://localhost:19090/prometheus/metrics
-    * http://localhost:8000/metrics (exporter)
+    * `http://localhost:80/grafana/metrics`
+    * `http://localhost:19090/prometheus/metrics`
+    * `http://localhost:8000/metrics` (exporter)
 * To view the main Prometheus page search `http://localhost:19090/prometheus/`.
 * To view Grafana search `http://localhost:80/grafana/` where the Prometheus datasource and JSON dashboard have been preconfigured and graphs should be immediatly available.
 
