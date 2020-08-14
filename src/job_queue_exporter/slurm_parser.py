@@ -15,7 +15,7 @@ def parse_output(output_array):
                 state = line_array[9]
                 try:
                     # if state is only 1 word
-                    if(not(len(state) == 0 or ' ' in state)):
+                    if(len(state) > 0 and ' ' not in state):
                         # 1. setdefault will return the squeue[project] value and,
                         # if necesary it will initialize the value with an empty dict
                         # 2. setdefault will initialise job state with value 0,
