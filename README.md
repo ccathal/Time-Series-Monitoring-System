@@ -14,7 +14,7 @@ sudo apt install ansible && ansible-galaxy collection install community.grafana
 ```
 git clone https://gitlab.com/surfprace/cathal.git
 ```
-4. Change the `--command` flag in the exporter service file at `ansible/roles/hpc-exporter/files/hpc-exporter.service` for the python script to execute the official Slurm `squeue` commnd. The following command is recommended to insert:
+4. Change the `--command` flag in the exporter service file at `ansible/roles/hpc-exporter/files/hpc-exporter.service` for the python script to execute the official Slurm `squeue` commnad. The following command is recommended to insert:
 ```
 squeue --all -h --format=%A,%j,%a,%g,%u,%P,%v,%D,%C,%T,%V,%M
 ```
@@ -31,6 +31,13 @@ ansible-playbook -K playbook.yml
 * To view Grafana search `http://localhost:80/grafana/` where the Prometheus datasource and JSON dashboard have been preconfigured and graphs should be immediatly available.
 
 ## Slurm Exporter
+The `src/job_queue_exporter/main_exporter.py` file is the main exporter script which contains the `--command` flag to specify the Slurm job queue `squeue` command. By default, the script is running a dummy `dummy_squeue` command which will be replaced by the official squeue command. The recommended flag command to run is -
+`squeue --all -h --format=%A,%j,%a,%g,%u,%P,%v,%D,%C,%T,%V,%M`
+
+The `src/job_queue_exporter/slurm_parser.py` script is called by the main exporter which parses the above Slurm `squeue` command after the main exporter has run the `dummy_squeue` command with `subprocess.Popen()`.
+
+A map of key-values pairs is returned to the main exporter where a Prometheus Gauge Metric is created and data is exposed over `http://localhost:8000/`. The metric is expored in the following format: `slurm_group{project_name=<project_name>, job_type=<job_type>}`.
+
 The exporter is avalable as a `pip` package. To install the exporter package execute: 
 ```
 pip3 install job-queue-exporter
