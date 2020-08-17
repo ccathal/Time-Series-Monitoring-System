@@ -14,7 +14,7 @@ sudo apt install ansible && ansible-galaxy collection install community.grafana
 ```
 git clone https://gitlab.com/surfprace/cathal.git
 ```
-4. Change the `--command` flag in the exporter service file at `ansible/roles/hpc-exporter/files/hpc-exporter.service` for the python script to execute the official Slurm `squeue` commnad. The following command is recommended to insert:
+4. Change the `--command` flag in the exporter service file at `ansible/roles/hpc-exporter/files/hpc-exporter.service` for the python script to execute the official Slurm `squeue` command. The following command is recommended to insert:
 ```
 squeue --all -h --format=%A,%j,%a,%g,%u,%P,%v,%D,%C,%T,%V,%M
 ```
