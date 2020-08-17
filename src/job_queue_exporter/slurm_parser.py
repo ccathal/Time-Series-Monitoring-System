@@ -11,14 +11,14 @@ functions:
 """
 
 def parse_output(output_array):
-     """Parses squeue string array data and creats a nested map
-     containing necessary squeue data.
+    """Parses squeue string array data and creats a nested map
+    containing necessary squeue data.
 
     Parameters
     ----------
     output_array : array
         Array of str containing squeue data
-        
+
 
     Returns
     -------
