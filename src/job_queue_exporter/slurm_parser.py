@@ -1,7 +1,31 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+"""Slurm Squeue Parser
+
+Parses squeue string array data and orders the data into nested map.
+
+This file can be imported as a module and contains the following 
+functions:
+    * parse_output: returns a nested map containing necessary squeue info
+"""
+
 def parse_output(output_array):
+     """Parses squeue string array data and creats a nested map
+     containing necessary squeue data.
+
+    Parameters
+    ----------
+    output_array : array
+        Array of str containing squeue data
+        
+
+    Returns
+    -------
+    dict{dict{}}
+        nested dictionary ict{project_name: dict{job_type: integer}} 
+    """
+
     squeue_info = {}
 
     for output in output_array:

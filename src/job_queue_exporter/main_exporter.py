@@ -1,6 +1,26 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+"""Main Job Queue HPC Scheduler Exporter
+
+This script allows a user to insert their own job queue command via 
+--command flag. This command is executed with Pythons subprocess.Popoen
+and job queue data is returned. 
+
+Data is collected and forworded to slurm_parser.py parse_output() method
+to convert string data into a dict{project_name: dict{job_type: integer}}.
+
+The map is transformed into a Prometheus Gauge Metric & exposed over http
+endpoint port 8000.
+
+Script acceps a string --command flag indicating the command line
+argument for retrieving job queue information from HPC Scheduler
+
+The file can be imported as a module and contains the following 
+functions:
+    * main - the main function of the script
+"""
+
 from prometheus_client import start_http_server, Gauge
 from job_queue_exporter.slurm_parser import parse_output
 import time
