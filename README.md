@@ -18,11 +18,12 @@ git clone https://gitlab.com/surfprace/cathal.git
 ```
 squeue --all -h --format=%A,%j,%a,%g,%u,%P,%v,%D,%C,%T,%V,%M
 ```
-4. From the `ansible` directory, run the ansible playbook & enter root user password when prompted:
+5. Configure the AlertManager medium receiver (email, Slack etc.) under `ansible/roles/prometheus/files/alertmanager/alertmanager.yml`. More information on configuring to your specific needs can be found in this [manual](https://grafana.com/blog/2020/02/25/step-by-step-guide-to-setting-up-prometheus-alertmanager-with-slack-pagerduty-and-gmail/). Also, depending on the medium configured, change the `receiver` flag in the same file to either `email-me` or `slack-notification`.
+6. From the `ansible` directory, run the ansible playbook & enter root user password when prompted:
 ```
 ansible-playbook -K playbook.yml
 ```
-5. Result:
+7. Result:
 * If you open your web browser and visit the following sites, metrics of each sub-system can be observed:
     * `http://localhost:80/grafana/metrics`
     * `http://localhost:19090/prometheus/metrics`
@@ -107,7 +108,12 @@ WantedBy=multi-user.target
 ```
 
 ### Prometheus Server
-The number one file in configuring Prometheus is `prometheus.yml` which specifies all the Prometheus Targets, their associated http endpoint where metrics are exposed and scraping time interval. Other information can be configured here associated with Prometheus Rules and the built-in Prometheus AlertManager System (not yet implemented). The `prometheus.yml` file is found under `ansible/roles/prometheus/files/prometheus/prometheus.yml` which runs at `http://localhost:9090/` locally or `http://localhost:19090/prometheus/` to the outside world due to the reverse proxy.
+The number one file in configuring Prometheus is `prometheus.yml` which specifies all the Prometheus Targets, their associated http endpoint where metrics are exposed and scraping time interval. Other information can be configured here associated with Prometheus Rules and the built-in Prometheus AlertManager System. The `prometheus.yml` file is found under `ansible/roles/prometheus/files/prometheus/prometheus.yml` which runs at `http://localhost:9090/` locally or `http://localhost:19090/prometheus/` to the outside world due to the reverse proxy.
+
+### Prometheus AlertManager
+The AlertManager is configured under the `prometheus` Ansible role. The `prometheus.yml` file runs the AlertManager at `http://localhost:9093` and calls the `prometheus.rules.yml` file which is available to view under the same Ansible directory. Here, alert rules are configured. By default, the file contains one rule which alerts when any configured Prometheus Target (itself, Exporter or Grafana) is down.
+
+The `roles/prometheus/tasks/alertmanager/alertmanager.yml` file contains details of the medium which will receive the specific alert. Two mediums are configured, email and Slack. Prior to running the Ansible script, you should configure this file to your own email or Slack configurations. For more details on configuring, view this [manual](https://grafana.com/blog/2020/02/25/step-by-step-guide-to-setting-up-prometheus-alertmanager-with-slack-pagerduty-and-gmail/). The `alertmanager.service` file available to view under the same Ansible directory as the above file allows the AlertManager to be run as systemd backgroud service.
 
 ### Grafana
 Grafana runs at `http://localhost:3000/` locally or `http://localhost:80/grafana/` to the outside world due to the reverse proxy. The default Grafana username and password is `admin` to login.
