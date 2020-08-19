@@ -1,6 +1,8 @@
+global:
+  resolve_timeout: 1m
+
 route:
-  group_by: [Alertname]
-  receiver: email-me
+  receiver: slack-notifications
 
 receivers:
 - name: email-me
@@ -8,6 +10,12 @@ receivers:
   - to: cathalcorbett3@gmail.com
     from: cathalcorbett3@gmail.com
     smarthost: smtp.gmail.com:587
-    auth_username: 'cathalcorbett3@gmail.com'
-    auth_identity: 'cathalcorbett3@gmail.com'
-    auth_password: 'xxxxxxxxxx'
+    auth_username: '<email_address>@gmail.com'
+    auth_identity: '<email_address>@gmail.com'
+    auth_password: '*************************'
+    send_resolved: true
+- name: slack-notifications
+  slack_configs:
+  - api_url: '<slack_url>'
+    channel: '#<channell_name>'
+    send_resolved: true
