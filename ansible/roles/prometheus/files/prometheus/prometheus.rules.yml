@@ -1,0 +1,6 @@
+groups:
+  - name: 'Prometheus Target Instance Down'
+    rules:
+    - alert: InstanceDown
+      expr: up == 0
+      for: 1m

@@ -17,7 +17,7 @@
     group: prometheus
   with_items:
     - /etc/prometheus
-    - /var/lib/prometheus 
+    - /etc/alertmanager
 
 - name: 'Make directories and dummy files necessary for prometheus'
   file:
@@ -27,7 +27,8 @@
     group: prometheus
   with_items:
     - /etc/prometheus/prometheus.yml
-    #- /etc/prometheus/prometheus.rules.yml
+    - /etc/prometheus/prometheus.rules.yml
+    - /etc/alertmanager/alertmanager.yml
 
 - name: 'Download & Install & Configure latest Prometheus version'
   script: files/prometheus.sh
@@ -59,17 +60,38 @@
     src: files/prometheus/prometheus.yml
     dest: /etc/prometheus/prometheus.yml
 
+- name: 'Populate prometheus.rules.yml file'
+  copy:
+    src: files/prometheus/prometheus.rules.yml
+    dest: /etc/prometheus/prometheus.rules.yml
+
 - name: 'Populate prometheus.service file'
   copy:
     src: files/prometheus/prometheus.service
     dest: /etc/systemd/system/prometheus.service
+
+- name: 'Populate alertmanager.yml file'
+  copy:
+    src: files/alertmanager/alertmanager.yml
+    dest: /etc/alertmanager/alertmanager.yml
+
+- name: 'Populate alertmanager.service file'
+  copy:
+    src: files/alertmanager/alertmanager.service
+    dest: /etc/systemd/system/alertmanager.service
 
 - name: 'Start HPC Exporter daemon'
   systemd:
     state: restarted
     enabled: yes
     daemon_reload: yes
-    name: prometheus
+    name: '{{ item }}'
+  with_items:
+    - prometheus
+    - alertmanager
 
 - name: 'Remove files'
-  shell: rm -rf prometheus-*
+  shell: '{{ item }}'
+  with_items:
+    - rm -rf prometheus-*
+    - rm -rf alertmanager-*
