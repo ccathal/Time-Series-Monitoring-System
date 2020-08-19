@@ -19,6 +19,7 @@ git clone https://gitlab.com/surfprace/cathal.git
 squeue --all -h --format=%A,%j,%a,%g,%u,%P,%v,%D,%C,%T,%V,%M
 ```
 5. Configure the AlertManager medium receiver (email, Slack etc.) under `ansible/roles/prometheus/files/alertmanager/alertmanager.yml`. More information on configuring to your specific needs can be found in this [manual](https://grafana.com/blog/2020/02/25/step-by-step-guide-to-setting-up-prometheus-alertmanager-with-slack-pagerduty-and-gmail/). Also, depending on the medium configured, change the `receiver` flag in the same file to either `email-me` or `slack-notification`.
+
 6. From the `ansible` directory, run the ansible playbook & enter root user password when prompted:
 ```
 ansible-playbook -K playbook.yml
