@@ -1,0 +1,15 @@
+---
+- hosts: 127.0.0.1
+  connection: local 
+  become: true
+  roles:
+  - role: reverse-proxy
+    tags: reverse-proxy
+  - role: hpc-exporter
+    tags: hpc-exporter
+  - role: prometheus
+    tags: prometheus
+  - role: grafana
+    tags: grafana
+  - role: grafana-config
+    tags: grafana-config

@@ -1,25 +1,34 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+"""Slurm Squeue Parser
+
+Parses squeue string array data and orders the data into nested map.
+
+This file can be imported as a module and contains the following 
+functions:
+    * parse_output: returns a nested map containing necessary squeue info
+"""
 
 def parse_output(output_array):
+    """Parses squeue string array data and creats a nested map
+    containing necessary squeue data.
+
+    Parameters
+    ----------
+    output_array : array
+        Array of str containing squeue data
+
+
+    Returns
+    -------
+    dict{dict{}}
+        nested dictionary ict{project_name: dict{job_type: integer}} 
+    """
+
     squeue_info = {}
-    default_values = {
-        'PENDING': 0,
-        'RUNNING': 0,
-        'SUSPENDED': 0,
-        'CANCELLED': 0,
-        'COMPLETING': 0,
-        'COMPLETED': 0,
-        'CONFIGURING': 0,
-        'FAILED': 0,
-        'TIMEOUT': 0,
-        'PREEMPTED': 0,
-        'NODE_FAIL': 0,
-    }
 
     for output in output_array:
-
         # split line into array based on commas
         line_array = output.strip().split(',')
 
@@ -29,15 +38,18 @@ def parse_output(output_array):
                 project = line_array[2]
                 state = line_array[9]
                 try:
-                    if(state in default_values):
-                        # setdefault will return the squeue[project] value and, if necesary
-                        # it will initialize the value with a copy of "default_values" dict
-                        # It is important to make a COPY of default_values
-                        values = squeue_info.setdefault(project, dict(default_values))
+                    # if state is only 1 word
+                    if(len(state) > 0 and ' ' not in state):
+                        # 1. setdefault will return the squeue[project] value and,
+                        # if necesary it will initialize the value with an empty dict
+                        # 2. setdefault will initialise job state with value 0,
+                        # if job state not already present
+                        # 3. increment job state value
+                        values = squeue_info.setdefault(project, {})
+                        values.setdefault(state, 0)
                         values[state] += 1
                 except:
                     print('Invalid job type. Ignoring stdout squeue output line: {}'.format(ouput))
         except:
             print('Squeue output line does not contain all 12 parameters. Ignoring stdout squeue output line: {}'.format(output))
-
     return squeue_info

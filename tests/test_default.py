@@ -14,67 +14,28 @@ def test_summary():
     allegro = {
         'PENDING': 2,
         'RUNNING': 1,
-        'SUSPENDED': 0,
-        'CANCELLED': 0,
         'COMPLETING': 5,
         'COMPLETED': 1,
-        'CONFIGURING': 0,
-        'FAILED': 0,
-        'TIMEOUT': 0,
-        'PREEMPTED': 0,
-        'NODE_FAIL': 0
     }
     lofar = {
         'PENDING': 1,
         'RUNNING': 1,
         'SUSPENDED': 1,
-        'CANCELLED': 0,
         'COMPLETING': 1,
         'COMPLETED': 1,
-        'CONFIGURING': 0,
-        'FAILED': 0,
-        'TIMEOUT': 0,
-        'PREEMPTED': 0,
-        'NODE_FAIL': 0
     }
     projectmine = {
         'PENDING': 1,
-        'RUNNING': 0,
-        'SUSPENDED': 0,
-        'CANCELLED': 0,
         'COMPLETING': 3,
         'COMPLETED': 1,
-        'CONFIGURING': 0,
-        'FAILED': 0,
-        'TIMEOUT': 0,
-        'PREEMPTED': 0,
-        'NODE_FAIL': 0
     }
     sksp = {
         'PENDING': 1,
         'RUNNING': 2,
-        'SUSPENDED': 0,
-        'CANCELLED': 0,
-        'COMPLETING': 0,
         'COMPLETED': 2,
-        'CONFIGURING': 0,
-        'FAILED': 0,
-        'TIMEOUT': 0,
-        'PREEMPTED': 0,
-        'NODE_FAIL': 0
     }
     spexone = {
-        'PENDING': 0,
         'RUNNING': 1,
-        'SUSPENDED': 0,
-        'CANCELLED': 0,
-        'COMPLETING': 0,
-        'COMPLETED': 0,
-        'CONFIGURING': 0,
-        'FAILED': 0,
-        'TIMEOUT': 0,
-        'PREEMPTED': 0,
-        'NODE_FAIL': 0
     }
 
     with open(datafile, 'r') as df:

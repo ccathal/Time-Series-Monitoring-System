@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='job_queue_exporter',
-    version='0.4',
+    version='0.11',
     description='Prometheus Exporter for job information associated with HPC Scheduler',
     url='http://gitlab.com/surfprace/cathal',
     author='Cathal Corbett',
@@ -14,7 +14,7 @@ setup(
     entry_points={
         'console_scripts': [
             'main_exporter = job_queue_exporter.main_exporter:main',
-            'squeue-dummy = job_queue_exporter.squeue:main',
+            'squeue_dummy = job_queue_exporter.squeue:main',
         ]
     }
 )

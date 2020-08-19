@@ -1,0 +1,24 @@
+- name: 'Create Prometheus datasource'
+  collections:
+    - community.grafana
+  grafana_datasource:
+    name: 'datasource-prometheus'
+    grafana_url: 'http://localhost:3000'
+    grafana_user: 'admin'
+    grafana_password: 'admin'
+    ds_type: 'prometheus'
+    is_default: 'yes'
+    ds_url: 'http://localhost:19090/prometheus'
+    state: present
+
+- name: 'Import Grafana dashboard'
+  collections:
+    - community.grafana
+  grafana_dashboard:
+    grafana_url: 'http://localhost:3000'
+    grafana_user: 'admin'
+    grafana_password: 'admin'
+    path: 'roles/grafana-config/files/grafana.json'
+    commit_message: 'Update by Ansible'
+    state: present
+    overwrite: true

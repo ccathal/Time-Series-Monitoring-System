@@ -1,0 +1,17 @@
+- name: 'Install  package nginx'
+  apt:
+    name: nginx
+    state: latest
+    update_cache: yes
+
+- name: 'Copy reverse proxy config settings'
+  copy:
+    src: files/default
+    dest: /etc/nginx/sites-available/default
+
+- name: 'Start nginx daemon'
+  systemd:
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+    name: nginx

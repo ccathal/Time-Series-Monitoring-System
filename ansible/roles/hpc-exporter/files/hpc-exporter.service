@@ -1,0 +1,8 @@
+[Unit]
+Description=HPC Scheduler Exporter Service
+
+[Service]
+ExecStart=main_exporter --command 'squeue_dummy'
+
+[Install]
+WantedBy=multi-user.target
